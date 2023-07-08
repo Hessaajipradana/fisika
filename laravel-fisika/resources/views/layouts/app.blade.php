@@ -13,8 +13,12 @@
 
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
+        @stack('top-script')
     </head>
     <body class="font-sans antialiased">
+
+        @stack('body-script')
+
         <div class="min-h-screen bg-gray-100">
             @include('layouts.navigation')
 
@@ -32,5 +36,20 @@
                 {{ $slot }}
             </main>
         </div>
+
+        <script src='https://api.tomtom.com/maps-sdk-for-web/cdn/6.x/6.23.0/maps/maps-web.min.js'></script>
+        <script src='https://api.tomtom.com/maps-sdk-for-web/cdn/6.x/6.23.0/services/services-web.min.js'></script>
+        <script src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js'></script>
+
+        <script type='text/javascript' src='{{ Vite::asset('resources/js/mobile-or-tablet.js') }}'></script>
+        <script type='text/javascript' src='{{ Vite::asset('resources/js/info-hint.js') }}'></script>
+        <script type='text/javascript' src='{{ Vite::asset('resources/js/searchbox-enter-submit.js') }}'></script>
+        <script type='text/javascript' src='{{ Vite::asset('resources/js/foldable.js') }}'></script>
+        <script type='text/javascript' src='{{ Vite::asset('resources/js/dom-helpers.js') }}'></script>
+        <script type='text/javascript' src='{{ Vite::asset('resources/js/formatters.js') }}'></script>
+        <script type='text/javascript' src='{{ Vite::asset('resources/js/results-manager.js') }}'></script>
+        <script type='text/javascript' src='{{ Vite::asset('resources/js/guidance-panel.js') }}'></script>
+
+        @stack('bottom-script')
     </body>
 </html>
